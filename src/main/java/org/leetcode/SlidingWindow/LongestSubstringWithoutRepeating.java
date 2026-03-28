@@ -1,4 +1,4 @@
-package org.leetcode;
+package org.leetcode.SlidingWindow;
 
 import java.util.HashMap;
 import java.util.Map;
