@@ -22,7 +22,7 @@ import java.util.Map;
 public class LongestSubstringWithoutRepeating {
 
     public static void main(String[] args) {
-        String s = " ";
+        String s = "abcafbh";
         System.out.println("Length of longest substring without repeating characters = " + lengthOfLongestSubstring(s));
     }
 
@@ -34,13 +34,16 @@ public class LongestSubstringWithoutRepeating {
         Map<Character, Integer> uniqueChar = new HashMap<>();
 
         for (int windowEnd = 0; windowEnd < s.length(); windowEnd++) {
-            char rightchar = s.charAt(windowEnd);
-            if (uniqueChar.containsKey(rightchar)) {
-                int newWindowStart = uniqueChar.get(rightchar);
+            char rightChar = s.charAt(windowEnd);
+            if (uniqueChar.containsKey(rightChar)) {
+                int newWindowStart = uniqueChar.get(rightChar);
                 windowStart = Math.max(windowStart, newWindowStart);
             }
 
-            uniqueChar.put(rightchar, windowEnd + 1);
+            // If I see this character again, the next valid start should be one step after its previous index.
+            uniqueChar.put(rightChar, windowEnd + 1);
+            // a b c a f b h
+            // 0 1 2 3 4 5 6
             if (windowEnd - windowStart + 1 > maxLength) {
                 maxLength = windowEnd - windowStart + 1;
             }
