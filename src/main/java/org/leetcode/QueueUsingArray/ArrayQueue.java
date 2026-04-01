@@ -1,62 +1,79 @@
 package org.leetcode.QueueUsingArray;
 
-
 import java.util.Arrays;
 
 /**
  * FIFO
- * <p>
- * Deque <- |_2_|_1_|_4_|_5_|_3_| <- Enqueue
- * ^               ^
- * front           rear
- * <p>
- * <p>
- * Front will always be zero
- * Read will move. When there is no element, rear will be -1.
  *
+ * Dequeue <- |_2_|_1_|_4_|_5_|_3_| <- Enqueue
+ *             ^
+ *           front (always 0)
+ *                           ^
+ *                          rear
+ *
+ * Front will always be zero.
+ * Rear will move. When there is no element, rear will be -1.
  */
 public class ArrayQueue {
 
-    int[] array;
-    int rear = -1;
-    int size;
+    private int[] array;
+    private int rear = -1;
+    private int size;
 
     public ArrayQueue(int size) {
         this.size = size;
         this.array = new int[size];
     }
 
-    public int dequeue() throws Exception {
+    // O(1)
+    public boolean enqueue(int data) {
+        if (isFull()) {
+            return false;
+        }
 
-        if (rear == -1) {
-            throw new Exception("Queue is Empty!");
+        rear++;
+        array[rear] = data;
+        return true;
+    }
+
+    // O(n)
+    public Integer dequeue() {
+        if (isEmpty()) {
+            return null;
         }
 
         int result = array[0];
 
-        for (int i = 0; i < Arrays.stream(array).sum(); i++) {
+        for (int i = 0; i < rear; i++) {
             array[i] = array[i + 1];
         }
 
         rear--;
-
         return result;
     }
 
-    public void enqueue(int data) throws Exception {
-
-        if (rear == size - 1) {
-            throw new Exception("Queue is Full!");
-        }
-        rear++;
-        array[rear] = data;
-    }
-
-    public int getFront() throws Exception {
-
-        if (rear == -1) {
-            throw new Exception("Queue is Empty!");
+    // O(1)
+    public Integer getFront() {
+        if (isEmpty()) {
+            return null;
         }
         return array[0];
+    }
+
+    public boolean isEmpty() {
+        return rear == -1;
+    }
+
+    public boolean isFull() {
+        return rear == size - 1;
+    }
+
+    @Override
+    public String toString() {
+        return "ArrayQueue{" +
+                "array=" + Arrays.toString(array) +
+                ", rear=" + rear +
+                ", size=" + size +
+                '}';
     }
 }
