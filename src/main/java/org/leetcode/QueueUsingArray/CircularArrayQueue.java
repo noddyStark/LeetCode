@@ -1,41 +1,45 @@
 package org.leetcode.QueueUsingArray;
 
+import java.util.Arrays;
+
 public class CircularArrayQueue {
 
-    int[] array;
-    int size;
-    int front, rear = 1;
+    private int[] array;
+    private int size;
+    private int front;
+    private int rear;
 
     public CircularArrayQueue(int size) {
         this.size = size;
-        array = new int[size];
+        this.array = new int[size];
+        this.front = -1;
+        this.rear = -1;
     }
 
-    // O(1) Time
-    public void enqueue(int data) throws Exception {
-        if ((rear + 1) % size == front) {
-            throw new Exception("Queue is Full");
+    public boolean enqueue(int data) {
+        if (isFull()) {
+            return false;
         }
 
-        if (front == -1) {
+        if (isEmpty()) {
             front = 0;
         }
 
         rear = (rear + 1) % size;
-
         array[rear] = data;
+        return true;
     }
 
-    // O(1) Time
-    public int dequeue() throws Exception {
-        if (front == -1) {
-            throw new Exception("Queue is Empty!");
+    public Integer dequeue() {
+        if (isEmpty()) {
+            return null;
         }
 
-        int result = array[0];
+        int result = array[front];
 
         if (front == rear) {
-            front = rear = -1;
+            front = -1;
+            rear = -1;
         } else {
             front = (front + 1) % size;
         }
@@ -43,10 +47,35 @@ public class CircularArrayQueue {
         return result;
     }
 
-    public boolean isEmpty() {
-        if (front == -1) {
-            return true;
+    public Integer getFront() {
+        if (isEmpty()) {
+            return null;
         }
-        return false;
+        return array[front];
+    }
+
+    public Integer getRear() {
+        if (isEmpty()) {
+            return null;
+        }
+        return array[rear];
+    }
+
+    public boolean isEmpty() {
+        return front == -1;
+    }
+
+    public boolean isFull() {
+        return (rear + 1) % size == front;
+    }
+
+    @Override
+    public String toString() {
+        return "CircularArrayQueue{" +
+                "array=" + Arrays.toString(array) +
+                ", size=" + size +
+                ", front=" + front +
+                ", rear=" + rear +
+                '}';
     }
 }
