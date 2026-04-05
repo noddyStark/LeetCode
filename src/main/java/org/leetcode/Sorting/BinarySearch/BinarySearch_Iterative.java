@@ -1,4 +1,4 @@
-package org.leetcode.Sorting;
+package org.leetcode.Sorting.BinarySearch;
 
 /**
  * Binary Search only operates on Sorted Arrays and can provide the results in O(logN) time.

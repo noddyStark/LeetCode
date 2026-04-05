@@ -1,4 +1,4 @@
-package org.leetcode.Sorting;
+package org.leetcode.Sorting.BinarySearch;
 
 public class BinarySearch_Recursive {
 
