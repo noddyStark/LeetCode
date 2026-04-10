@@ -7,7 +7,7 @@ package org.leetcode.LinkedList;
  * */
 public class ReverseALinkedList {
 
-    public static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
 
