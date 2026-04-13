@@ -30,7 +30,6 @@ public class LinkedListCycle {
         return false;
     }
 
-
     static void main() {
         ListNode head = new ListNode(3);
         ListNode node2 = new ListNode(2);

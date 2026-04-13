@@ -1,8 +1,5 @@
 package org.leetcode.LinkedList;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class ListNode {
     int val;
     ListNode next;

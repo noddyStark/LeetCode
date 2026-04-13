@@ -1,8 +1,5 @@
 package org.leetcode.LinkedList;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 /**
  * 21. Merge Two Sorted Lists
  * You are given the heads of two sorted linked lists list1 and list2.
@@ -31,39 +28,40 @@ import java.util.Collections;
  * -100 <= Node.val <= 100
  * Both list1 and list2 are sorted in non-decreasing order.
  */
-public class MergeTwoSortedLists_BruteForce {
+public class MergeTwoSortedLists {
 
     private static ListNode mergeLists(ListNode list1, ListNode list2) {
 
-        ArrayList<Integer> list = new ArrayList<>();
+        if (list1 == null) return list2;
+        if (list2 == null) return list1;
 
-        while (list1 != null || list2 != null) {
+        ListNode head;
 
-            if (list1 != null) {
-                list.add(list1.val);
+        if (list1.val <= list2.val) {
+            head = list1;
+            list1 = list1.next;
+        } else {
+            head = list2;
+            list2 = list2.next;
+        }
+
+        ListNode current = head;
+
+        while (list1 != null && list2 != null) {
+            if (list1.val <= list2.val) {
+                current.next = list1;
                 list1 = list1.next;
-            }
-
-            if (list2 != null) {
-                list.add(list2.val);
+            } else {
+                current.next = list2;
                 list2 = list2.next;
             }
+            current = current.next;
         }
 
-        Collections.sort(list);
-
-        System.out.println("Sorted List = " + list);
-
-        if (list.isEmpty()) {
-            return null;
-        }
-
-        ListNode head = new ListNode(list.getFirst());
-        ListNode curr = head;
-
-        for (int i = 1; i < list.size(); i++) {
-            curr.next = new ListNode(list.get(i));
-            curr = curr.next;
+        if (list1 != null) {
+            current.next = list1;
+        } else {
+            current.next = list2;
         }
 
         return head;
