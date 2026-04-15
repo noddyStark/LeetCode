@@ -1,5 +1,3 @@
-package org.leetcode.BinaryTree;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
