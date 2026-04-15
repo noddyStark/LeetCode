@@ -2,10 +2,10 @@ package org.leetcode.Graphs.BinaryTree;
 
 public class Node {
 
-    char val;
+    public char val;
 
-    Node left;
-    Node right;
+    public Node left;
+    public Node right;
 
     public Node(char val) {
         this.val = val;
