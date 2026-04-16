@@ -1,3 +1,5 @@
+package org.leetcode.Graphs.BinaryTree;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -21,45 +23,7 @@ public class BinaryTree {
 
     static void main() {
 
-        Node root = new Node('A');
-        Node nodeB = new Node('B');
-        Node nodeC = new Node('C');
-        Node nodeD = new Node('D');
-        Node nodeE = new Node('E');
-        Node nodeF = new Node('F');
-        Node nodeG = new Node('G');
-
-        root.left = nodeB;
-        root.right = nodeC;
-        nodeB.left = nodeD;
-        nodeB.right = nodeE;
-        nodeC.left = nodeF;
-        nodeC.right = nodeG;
-
-        printTree(root);
-    }
-
-
-    private static void printTree(Node root) {
-        Queue<Node> queue = new LinkedList<>();
-        queue.offer(root);
-
-        while (!queue.isEmpty()) {
-
-            for (int i = 0; i < queue.size(); i++) {
-                Node curr = queue.poll();
-                System.out.println(curr.val + " ");
-
-                if (curr.left != null) {
-                    queue.offer(curr.left); // Q = [C, D]
-                }
-
-                if (curr.right != null) {
-                    queue.offer(curr.right); // Q = [C, D, E]
-                }
-            }
-
-        }
-
+        Node<Character> root = BinaryTreeHelper.createSampleTree();
+        BinaryTreeHelper.printTree(root);
     }
 }

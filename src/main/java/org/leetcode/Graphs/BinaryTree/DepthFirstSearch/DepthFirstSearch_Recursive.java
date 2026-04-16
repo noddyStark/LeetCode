@@ -25,7 +25,13 @@ public class DepthFirstSearch_Recursive {
         Node root = BinaryTreeHelper.createSampleTree();
         BinaryTreeHelper.printTree(root);
 
+        Node toFind = new Node('G');
+
         dfs(root);
+
+        boolean result = nodePresentinTree(root, toFind);
+
+        System.out.println("Node : " + toFind.val + " is present in the tree = " + result);
     }
 
     private static void dfs(Node root) {
@@ -37,6 +43,19 @@ public class DepthFirstSearch_Recursive {
         dfs(root.right);
 
     }
+
+    private static boolean nodePresentinTree(Node root, Node toFind) {
+
+        if (root == null) return false;
+
+        if (root.val == toFind.val) return true;
+
+        // search left, if found → stop immediately
+        if (nodePresentinTree(root.left, toFind)) return true;
+
+        // otherwise search right
+        return nodePresentinTree(root.right, toFind);
+    }
 }
 
 /**
@@ -45,4 +64,5 @@ public class DepthFirstSearch_Recursive {
  * | Preorder  | Root → Left → Right |
  * | Inorder   | Left → Root → Right |
  * | Postorder | Left → Right → Root |
- * */
+ *
+ */

@@ -1,4 +1,4 @@
-package org.leetcode.Graphs;
+package org.leetcode.Graphs.BinaryTree.BreadthFirstSearch;
 
 import java.util.*;
 
