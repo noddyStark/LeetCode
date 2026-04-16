@@ -1,19 +1,37 @@
 package org.leetcode.Graphs.BinaryTree;
 
-import org.leetcode.Graphs.BinaryTree.Node;
-
 public class BinaryTreeHelper {
 
     // Build and return the sample tree
-    public static Node createSampleTree() {
+    public static Node<Character> createSampleTree() {
 
-        Node root = new Node('A');
-        Node nodeB = new Node('B');
-        Node nodeC = new Node('C');
-        Node nodeD = new Node('D');
-        Node nodeE = new Node('E');
-        Node nodeF = new Node('F');
-        Node nodeG = new Node('G');
+        Node<Character> root = new Node<>('A');
+        Node<Character> nodeB = new Node<>('B');
+        Node<Character> nodeC = new Node<>('C');
+        Node<Character> nodeD = new Node<>('D');
+        Node<Character> nodeE = new Node<>('E');
+        Node<Character> nodeF = new Node<>('F');
+        Node<Character> nodeG = new Node<>('G');
+
+        root.left = nodeB;
+        root.right = nodeC;
+        nodeB.left = nodeD;
+        nodeB.right = nodeE;
+        nodeC.left = nodeF;
+        nodeC.right = nodeG;
+
+        return root;
+    }
+
+    public static Node<Integer> createSampleTreeWithIntegers() {
+
+        Node<Integer> root = new Node<>(5);
+        Node<Integer> nodeB = new Node<>(9);
+        Node<Integer> nodeC = new Node<>(20);
+        Node<Integer> nodeD = new Node<>(15);
+        Node<Integer> nodeE = new Node<>(17);
+        Node<Integer> nodeF = new Node<>(18);
+        Node<Integer> nodeG = new Node<>(20);
 
         root.left = nodeB;
         root.right = nodeC;
