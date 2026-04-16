@@ -1,4 +1,6 @@
-package org.leetcode.Graphs.BinaryTree;
+package org.leetcode.Graphs.BinaryTree.BreadthFirstSearch;
+
+import org.leetcode.Graphs.BinaryTree.Node;
 
 import java.util.*;
 
@@ -6,11 +8,11 @@ public class BinaryTreeLevelOrderTraversal {
 
     static void main() {
 
-        TreeNode root = new TreeNode(3);
-        TreeNode node9 = new TreeNode(9);
-        TreeNode node20 = new TreeNode(20);
-        TreeNode node15 = new TreeNode(15);
-        TreeNode node7 = new TreeNode(7);
+        Node<Integer> root = new Node<Integer>(3);
+        Node<Integer> node9 = new Node<Integer>(9);
+        Node<Integer> node20 = new Node<Integer>(20);
+        Node<Integer> node15 = new Node<Integer>(15);
+        Node<Integer> node7 = new Node<Integer>(7);
 
         root.left = node9;
         root.right = node20;
@@ -24,14 +26,14 @@ public class BinaryTreeLevelOrderTraversal {
         printLevelOrder(levelOrder);
     }
 
-    private static List<List<Integer>> levelOrder(TreeNode root) {
+    private static List<List<Integer>> levelOrder(Node<Integer> root) {
         List<List<Integer>> levelOrder = new ArrayList<>();
 
         if (root == null) {
             return levelOrder;
         }
 
-        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<Node<Integer>> queue = new LinkedList<>();
         queue.offer(root);
 
         while (!queue.isEmpty()) {
@@ -39,7 +41,7 @@ public class BinaryTreeLevelOrderTraversal {
             List<Integer> currentLevel = new ArrayList<>();
 
             for (int i = 0; i < size; i++) {
-                TreeNode node = queue.poll();
+                Node<Integer> node = queue.poll();
                 currentLevel.add(node.val);
 
                 if (node.left != null) {
