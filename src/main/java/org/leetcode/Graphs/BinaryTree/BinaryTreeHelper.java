@@ -23,6 +23,13 @@ public class BinaryTreeHelper {
         return root;
     }
 
+    /*
+            5
+          /   \
+         9     20
+        / \   /  \
+      15  17 18  20
+    */
     public static Node<Integer> createSampleTreeWithIntegers() {
 
         Node<Integer> root = new Node<>(5);

@@ -1,5 +1,6 @@
 package org.leetcode.Graphs.BinaryTree.BreadthFirstSearch;
 
+import org.leetcode.Graphs.BinaryTree.BinaryTreeHelper;
 import org.leetcode.Graphs.BinaryTree.Node;
 
 import java.util.*;
@@ -8,21 +9,8 @@ public class BinaryTreeLevelOrderTraversal {
 
     static void main() {
 
-        Node<Integer> root = new Node<Integer>(3);
-        Node<Integer> node9 = new Node<Integer>(9);
-        Node<Integer> node20 = new Node<Integer>(20);
-        Node<Integer> node15 = new Node<Integer>(15);
-        Node<Integer> node7 = new Node<Integer>(7);
-
-        root.left = node9;
-        root.right = node20;
-        node9.left = null;
-        node9.right = null;
-        node20.left = node15;
-        node20.right = node7;
-
+        Node<Integer> root = BinaryTreeHelper.createSampleTreeWithIntegers();
         List<List<Integer>> levelOrder = levelOrder(root);
-
         printLevelOrder(levelOrder);
     }
 
