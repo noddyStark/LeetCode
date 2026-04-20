@@ -10,7 +10,10 @@ public class Node<T> {
         this.val = val;
     }
 
-    public Node(T val, Node right, Node left) {
+    boolean leftDefined = false;
+    boolean rightDefined = false;
+
+    public Node(T val, Node<T> right, Node<T> left) {
         this.val = val;
         this.right = right;
         this.left = left;
