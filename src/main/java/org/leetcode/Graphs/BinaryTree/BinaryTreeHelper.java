@@ -37,32 +37,37 @@ public class BinaryTreeHelper {
     /*
             5
           /   \
-         9     20
-        / \   /  \
-      15  17 18  22
-      /    \
-     4      16
+         4     8
+        /     /  \
+      11     13   4
+      / \        / \
+     7   2      5   1
     */
     public static Node<Integer> createSampleTreeWithIntegers() {
 
         Node<Integer> root = new Node<>(5);
-        Node<Integer> node9 = new Node<>(9);
-        Node<Integer> node20 = new Node<>(20);
-        Node<Integer> node15 = new Node<>(15);
-        Node<Integer> node17 = new Node<>(17);
-        Node<Integer> node18 = new Node<>(18);
-        Node<Integer> node22 = new Node<>(22);
         Node<Integer> node4 = new Node<>(4);
-        Node<Integer> node16 = new Node<>(16);
+        Node<Integer> node8 = new Node<>(8);
+        Node<Integer> node11 = new Node<>(11);
+        Node<Integer> node13 = new Node<>(13);
+        Node<Integer> node4_2 = new Node<>(4);
+        Node<Integer> node7 = new Node<>(7);
+        Node<Integer> node2 = new Node<>(2);
+        Node<Integer> node5 = new Node<>(5);
+        Node<Integer> node1 = new Node<>(1);
 
-        root.left = node9;
-        root.right = node20;
-        node9.left = node15;
-        node9.right = node17;
-        node20.left = node18;
-        node20.right = node22;
-        node15.left = node4;
-        node17.right = node16;
+        root.left = node4;
+        root.right = node8;
+
+        node4.left = node11;
+        node11.left = node7;
+        node11.right = node2;
+
+        node8.left = node13;
+        node8.right = node4_2;
+
+        node4_2.left = node5;
+        node4_2.right = node1;
 
         return root;
     }
