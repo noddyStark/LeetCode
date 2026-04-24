@@ -1,4 +1,4 @@
-package org.leetcode.DynamicProgramming;
+package org.leetcode.Arrays;
 
 import java.util.Arrays;
 import java.util.HashMap;
