@@ -70,6 +70,27 @@ public class PathSumBetweenTwoNodes {
                 return true;
             }
 
+            /*
+            * Think of your queues like:
+            Queue    = [node1, node2, node3]
+            SumQueue = [sum1 , sum2 , sum3 ]
+
+            Meaning:
+
+            node1 has sum = sum1
+            node2 has sum = sum2
+            *
+            * Basically when we are polling from both queue we are polling parallel as part of this code,
+            * like for this node, this was the sum
+            * These two queues:
+
+            Queue<Node<Integer>> queue;
+            Queue<Integer> sumQueue;
+
+            are behaving like one combined structure:
+
+            (node, sumForThatNode)
+            * */
             if (current.left != null) {
                 queue.offer(current.left);
                 sumQueue.offer(currentSum + current.left.val);
