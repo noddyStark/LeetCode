@@ -53,20 +53,21 @@ public class DetectCycleInAnUndirectedGraph_DFS {
 
     private static boolean isCycleDFS(ArrayList<ArrayList<Integer>> adjacencyList,
                                       boolean[] visited,
-                                      int u,
+                                      int node,
                                       int parent) {
-        visited[u] = true;
+        visited[node] = true;
 
-        for (int v : adjacencyList.get(u)) {
-            if (v == parent) {
+        for (int neighbor : adjacencyList.get(node)) {
+
+            if (neighbor == parent) {
                 continue;
             }
 
-            if (visited[v]) {
+            if (visited[neighbor]) {
                 return true;
             }
 
-            if (isCycleDFS(adjacencyList, visited, v, u)) {
+            if (isCycleDFS(adjacencyList, visited, neighbor, node)) {
                 return true;
             }
         }
