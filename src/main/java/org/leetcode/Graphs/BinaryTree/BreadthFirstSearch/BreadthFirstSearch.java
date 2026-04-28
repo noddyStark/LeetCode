@@ -3,13 +3,13 @@ package org.leetcode.Graphs.BinaryTree.BreadthFirstSearch;
 import java.util.*;
 
 /**
- * 1
- * / \
- * 2   3
- * \ /
- * 4
- * |
- * 5
+           1
+         /  \
+        2    3
+         \  /
+          4
+          |
+          5
  * <p>
  * Time: O(V + E)
  * Space: O(V) (queue + visited)
@@ -55,15 +55,26 @@ public class BreadthFirstSearch {
         distance[start] = 0;
         predecessor[start] = -1;
 
+        System.out.println("distance = " + Arrays.toString(distance));
+
         System.out.print("BFS Traversal: ");
 
+        /*
+           1
+         /   \
+        2     3
+         \   /
+           4
+           |
+           5
+        * */
         while (!queue.isEmpty()) {
 
             int node = queue.poll();
             System.out.print(node + " ");
 
             for (int neighbour : graph.get(node)) {
-                if (!visited[neighbour]) {
+                if (!visited[neighbour]) { // visited[1] = true;
 
                     queue.offer(neighbour);
                     visited[neighbour] = true;
