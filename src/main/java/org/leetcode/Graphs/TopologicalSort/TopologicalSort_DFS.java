@@ -24,7 +24,7 @@ Explanation: The output true denotes that the order is valid. Few valid Topologi
 
 Examples:
 * */
-public class TopologicalSort {
+public class TopologicalSort_DFS {
 
     static void main() {
 
@@ -49,15 +49,15 @@ public class TopologicalSort {
         boolean[] visited = new boolean[V];
         Stack<Integer> stack = new Stack<>();
 
-        for (int i=0; i<V;i++) {
-            if(!visited[i]) {
+        for (int i = 0; i < V; i++) {
+            if (!visited[i]) {
                 dfs(adjacencyList, visited, i, stack);
             }
         }
 
         ArrayList<Integer> topoSort = new ArrayList<>();
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             topoSort.add(stack.pop());
         }
 
@@ -70,7 +70,7 @@ public class TopologicalSort {
         visited[u] = true;
 
         for (int neighbour : adjacencyList.get(u)) {
-            if(!visited[neighbour]) {
+            if (!visited[neighbour]) {
                 dfs(adjacencyList, visited, neighbour, stack);
             }
         }
