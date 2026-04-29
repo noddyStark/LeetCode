@@ -1,4 +1,4 @@
-package org.leetcode.Graphs.CycleDetection;
+package org.leetcode.Graphs.UndirectedGraph;
 
 import java.util.ArrayList;
 
@@ -40,6 +40,7 @@ public class DetectCycleInAnUndirectedGraph_DFS {
         System.out.println("has cycle = " + result);
     }
 
+    // 👉 We check cycle for each connected component (not each node independently)
     private static boolean isCycle(ArrayList<ArrayList<Integer>> adjacencyList, boolean[] visited) {
 
         for (int i = 0; i < adjacencyList.size(); i++) {

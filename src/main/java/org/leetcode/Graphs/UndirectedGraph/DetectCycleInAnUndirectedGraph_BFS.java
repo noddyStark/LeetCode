@@ -1,4 +1,4 @@
-package org.leetcode.Graphs.CycleDetection;
+package org.leetcode.Graphs.UndirectedGraph;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

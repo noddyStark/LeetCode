@@ -67,9 +67,11 @@ public class DetectCycleInADirectedGraph_DFS {
 
         for (int neighbour : adjacencyList.get(node)) {
             // if not visited, we check for cycle further
+            System.out.println("visited[neighbour] = " + visited[neighbour] + " for neighbour = " + neighbour + " when node = " + node);
             if(!visited[neighbour] && isCycleDFS(adjacencyList, visited, neighbour, inRecursion)) {
                 return true;
             } else if (inRecursion[neighbour]) {
+                System.out.println("inRecursion true for neighbour = " + neighbour + " when node = " + node);
                 return true;
             }
         }
