@@ -55,18 +55,12 @@ public class DFSOfGraph {
     private static void dfs(ArrayList<ArrayList<Integer>> adjacencyList, boolean[] visited,
                             int u, ArrayList<Integer> result) {
 
-        if (visited[u]) {
-            return;
-        }
-
         visited[u] = true;
         result.add(u);
-        List<Integer> neighbours = adjacencyList.get(u);
 
-        for (int i = 0; i < neighbours.size(); i++) {
-            int neighbour = neighbours.get(i);
-            if (!visited[neighbour]) {
-                dfs(adjacencyList, visited, neighbour, result);
+        for (int v : adjacencyList.get(u)) {
+            if (!visited[v]) {
+                dfs(adjacencyList, visited, v, result);
             }
         }
     }
