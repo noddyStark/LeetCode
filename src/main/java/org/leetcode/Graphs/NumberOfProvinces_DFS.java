@@ -32,7 +32,7 @@ isConnected[i][j] is 1 or 0.
 isConnected[i][i] == 1
 isConnected[i][j] == isConnected[j][i]
 * */
-public class NumberOfProvinces {
+public class NumberOfProvinces_DFS {
     static void main() {
         int[][] isConnected = {
                 {1, 1, 0}, // City 1
@@ -66,8 +66,12 @@ public class NumberOfProvinces {
 
     private static void dfs(ArrayList<ArrayList<Integer>> adjacencyList, boolean[] visited, int u) {
 
+        // Time Complexity :  Node visits = O(n)
         visited[u] = true;
 
+        // Iterate only over actual edges, Worst case (fully connected graph), Each node connects to (n-1) nodes
+        // Total edges ≈ n²
+        // DFS = O(nodes + edges) = O(n + n²) = O(n²)
         for (int nextCity : adjacencyList.get(u)) {
             if (!visited[nextCity]) {
                 dfs(adjacencyList, visited, nextCity);
@@ -76,6 +80,10 @@ public class NumberOfProvinces {
 
     }
 
+    // Time Complexity = > Adjacency List Creation = O(n²)
+    // Each node stores ~n neighbors
+    // Total entries ≈ n²
+    // Space Complexity => Adjacency List = O(n²)
     private static ArrayList<ArrayList<Integer>> createAdjacencyList(int[][] isConnected) {
         ArrayList<ArrayList<Integer>> adjacencyList = new ArrayList<>();
         int size = isConnected.length;
