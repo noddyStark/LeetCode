@@ -29,7 +29,7 @@ Explanation: There are a total of 2 courses to take.
 To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1.
 So it is impossible.
 * */
-public class CourseSchedule {
+public class CourseSchedule_BFS {
 
     public static void main(String[] args) {
         int numCourses = 6;
