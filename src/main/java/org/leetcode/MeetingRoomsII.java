@@ -1,4 +1,4 @@
-package org.leetcode.Stack;
+package org.leetcode;
 
 
 import java.util.Arrays;
@@ -38,7 +38,6 @@ public class MeetingRoomsII {
         PriorityQueue<Integer> minheap = new PriorityQueue<>();
 
         int maxRooms = 0;
-
 
         for (int[] interval : intervals) {
             int start = interval[0];
