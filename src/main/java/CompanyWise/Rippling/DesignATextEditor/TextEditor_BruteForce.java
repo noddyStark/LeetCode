@@ -45,6 +45,10 @@ public class TextEditor_BruteForce {
         return getLast10Chars();
     }
 
+    /**
+     * Moves the cursor to the right k times. Returns the last min(10, len) characters to the left of the cursor,
+     * where len is the number of characters to the left of the cursor.
+     * */
     public String cursorRight(int k) {
         int move = Math.min(k, right.length());
 
