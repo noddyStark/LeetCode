@@ -80,13 +80,29 @@ public class CountVowelSubstringsOfAString {
                 System.out.println("minLastSeen = " + minLastSeen);
 
                 /*
-                 * For every index i, we are asking:
+                 * For every index i, we ask:
                  * How many valid vowel substrings can end at this current index?
-                 * That number is:
+                 *
+                 * A valid substring ending at i can start anywhere from vowelStart to minLastSeen.
+                 *
+                 * Why?
+                 * minLastSeen is the earliest index among the last seen positions of all 5 vowels.
+                 * If we start after minLastSeen, we will miss that vowel.
+                 *
+                 * So the valid start positions are:
+                 * vowelStart, vowelStart + 1, ..., minLastSeen
+                 *
+                 * Number of valid starts:
                  * minLastSeen - vowelStart + 1
                  *
-                 * Add all substrings ending at current index that start from vowelStart up to minLastSeen.
+                 * The +1 is because both ends of the range are included.
+                 *
+                 * Example:
+                 * if vowelStart = 0 and minLastSeen = 2,
+                 * valid starts are 0, 1, 2 => 3 starts.
+                 * Formula: 2 - 0 + 1 = 3
                  */
+                count += minLastSeen - vowelStart + 1;
                 count = count + minLastSeen - vowelStart + 1;
             }
         }
