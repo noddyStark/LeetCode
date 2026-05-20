@@ -1,4 +1,4 @@
-package CompanyWise.Snowflake;
+package CompanyWise.Snowflake.ValidateASETCardGameHand;
 
 
 /*
@@ -11,6 +11,12 @@ package CompanyWise.Snowflake;
  *               shape: oval
  *
  *               }
+ *
+ * Follow-up 1: Card has N attributes instead of 4
+Out current code already supports this.
+Because we are doing:
+int attributes = cards[0].length;
+So it does not matter whether each card has 4 attributes, 5 attributes, or 100 attributes.
  * */
 public class ValidateASETCardGameHand {
 
