@@ -43,7 +43,11 @@ public class ComputeHeightFromParentArrayRepresentation {
             if (parents[child] == -1) {
                 root = child;
             } else {
-                parentsToChild.computeIfAbsent(parent, k -> new ArrayList<>()).add(child);
+                if (!parentsToChild.containsKey(parent)) {
+                    parentsToChild.put(parent, new ArrayList<>());
+                }
+
+                parentsToChild.get(parent).add(child);
             }
         }
 
@@ -86,9 +90,14 @@ public class ComputeHeightFromParentArrayRepresentation {
         if (parentsToChild.get(node) != null) {
             for (int child : parentsToChild.get(node)) {
                 int childHeight = dfs(child, parentsToChild);
+                System.out.println("child height : " + childHeight + " for child : " + child);
                 maxChildHeight = Math.max(childHeight, maxChildHeight);
+                System.out.println("maxChildHeight : " + childHeight + " for child : " + child);
+
             }
         }
+
+        System.out.println("Reached leaf node : " + node);
 
         return 1 + maxChildHeight;
     }

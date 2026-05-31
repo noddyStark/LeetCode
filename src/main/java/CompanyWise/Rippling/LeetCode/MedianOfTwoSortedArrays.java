@@ -53,11 +53,11 @@ public class MedianOfTwoSortedArrays {
     --------------------------------------------------------------------------------
     nums1 →   1,  3,  8,  9                  |        15
                 ↑
-            maxLeft1 = 9                          minRight1 = 15
+            leftMaxNums1 = 9                          rightMinNums1 = 15
 
     nums2 →   2,  4,  7, 10, 11               |    12, 13
                        ↑
-                  maxLeft2 = 11                   minRight2 = 12
+                  leftMaxNums2 = 11                   rightMinNums2 = 12
 
     --------------------------------------------------------------------------------
 
@@ -71,14 +71,14 @@ public class MedianOfTwoSortedArrays {
 
     VALID CONDITION:
 
-        maxLeft1 <= minRight2   →   9  <= 12  ✅
-        maxLeft2 <= minRight1   →  11  <= 15  ✅
+        leftMaxNums1 <= rightMinNums2   →   9  <= 12  ✅
+        leftMaxNums2 <= rightMinNums1   →  11  <= 15  ✅
 
     --------------------------------------------------------------------------------
 
     Since total is EVEN:
 
-        median = ( max(maxLeft1, maxLeft2) + min(minRight1, minRight2) ) / 2
+        median = ( max(leftMaxNums1, leftMaxNums2) + min(rightMinNums1, rightMinNums2) ) / 2
                = ( max(9, 11) + min(15, 12) ) / 2
                = ( 11 + 12 ) / 2
                = 11.5
@@ -115,33 +115,33 @@ public class MedianOfTwoSortedArrays {
 
 
             /*
-             * maxLeft1 -> Largest element on LEFT side of nums1
-             * minRight1 -> Smallest element on RIGHT side of nums1
-             * maxLeft2 -> Largest element on LEFT side of nums2
-             * minRight2 -> Smallest element on RIGHT side of nums2
+             * leftMaxNums1 -> Largest element on LEFT side of nums1
+             * rightMinNums1 -> Smallest element on RIGHT side of nums1
+             * leftMaxNums2 -> Largest element on LEFT side of nums2
+             * rightMinNums2 -> Smallest element on RIGHT side of nums2
              */
 
             // Left Half
-            int maxLeft1 = partition1 == 0? Integer.MIN_VALUE : nums1[partition1 - 1];
-            int maxLeft2 = partition2 == 0? Integer.MIN_VALUE: nums2[partition2 - 1];
+            int leftMaxNums1 = partition1 == 0? Integer.MIN_VALUE : nums1[partition1 - 1];
+            int leftMaxNums2 = partition2 == 0? Integer.MIN_VALUE: nums2[partition2 - 1];
 
 
             // Right Half
-            int minRight1 = (partition1 == m) ? Integer.MAX_VALUE : nums1[partition1];
-            int minRight2 = (partition2 == n) ? Integer.MAX_VALUE : nums2[partition2];
+            int rightMinNums1 = (partition1 == m) ? Integer.MAX_VALUE : nums1[partition1];
+            int rightMinNums2 = (partition2 == n) ? Integer.MAX_VALUE : nums2[partition2];
 
             // Correct partition
-            if (maxLeft1 <= minRight2 && maxLeft2 <= minRight1) {
+            if (leftMaxNums1 <= rightMinNums2 && leftMaxNums2 <= rightMinNums1) {
 
                 if ((m + n) % 2 == 0) {
-                    return (Math.max(maxLeft1, maxLeft2) + Math.min(minRight1, minRight2)) / 2.0;
+                    return (Math.max(leftMaxNums1, leftMaxNums2) + Math.min(rightMinNums1, rightMinNums2)) / 2.0;
                 } else {
-                    return Math.max(maxLeft1, maxLeft2);
+                    return Math.max(leftMaxNums1, leftMaxNums2);
                 }
             }
 
             // Move left
-            else if (maxLeft1 > minRight2) {
+            else if (leftMaxNums1 > rightMinNums2) {
                 high = partition1 - 1;
             }
             // Move right
