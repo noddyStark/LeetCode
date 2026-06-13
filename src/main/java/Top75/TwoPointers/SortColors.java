@@ -25,6 +25,27 @@ public class SortColors {
         System.out.println(Arrays.toString(sortColors(nums)));
     }
 
+    /*
+    Dutch National Flag algorithm.
+
+     We are dividing the array into 3 regions while scanning:
+     0s region | 1s region | unknown region | 2s region
+
+     Use three pointers:
+
+    i -> position where next 0 should go
+    j -> current element being checked
+    k -> position where next 2 should go
+
+    Correct intuition
+
+    At any point:
+
+    [0 ... i-1]      -> all 0s
+    [i ... j-1]      -> all 1s
+    [j ... k]        -> unknown
+    [k+1 ... end]    -> all 2s
+    * */
     public static int[] sortColors(int[] nums) {
 
         int len = nums.length;
@@ -35,11 +56,20 @@ public class SortColors {
         while (j <= k) {
 
             if (nums[j] == 1) {
+                // Case 1: nums[j] == 1
+                // A 1 is already in the middle region, so just move forward.
                 j++;
             } else if (nums[j] == 2) {
+                // Case 2: nums[j] == 2
+                // A 2 belongs at the end, so swap it with nums[k].
+                // swap(nums, j, k);
+                // k--;
                 swap(nums, j, k);
                 k--;
             } else {
+                // Case 3: nums[j] == 0
+                // A 0 belongs at the front, so swap it with nums[i].
+                // Because after swapping, the value that came from i is already processed. It is either a 1 or the same 0, so j can move forward.
                 swap(nums, j, i);
                 j++;
                 i++;

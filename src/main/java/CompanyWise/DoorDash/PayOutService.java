@@ -1,4 +1,4 @@
-package DoorDash;
+package CompanyWise.DoorDash;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -119,15 +119,15 @@ class PayOutService {
 
         return totalPay;
     }
+
+    public static class Main {
+        public static void main(String[] args) {
+            DeliveryActivityClient activityClient = new MockDeliveryActivityClient();
+            PayOutService payOutService = new PayOutService(activityClient);
+
+            double amount = payOutService.calculatePayout("dasher1");
+
+            System.out.println("Payout = " + amount + "$");
+        }
 }
-
-public class Main {
-    public static void main(String[] args) {
-        DeliveryActivityClient activityClient = new MockDeliveryActivityClient();
-        PayOutService payOutService = new PayOutService(activityClient);
-
-        double amount = payOutService.calculatePayout("dasher1");
-
-        System.out.println("Payout = " + amount + "$");
-    }
 }
