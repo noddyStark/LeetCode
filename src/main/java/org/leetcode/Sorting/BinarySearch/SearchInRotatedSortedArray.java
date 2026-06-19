@@ -60,4 +60,42 @@ public class SearchInRotatedSortedArray {
 
         return -1;
     }
+
+    private static int searchAgain(int[] numbers, int target) {
+
+        int low = 0;
+        int high = numbers.length - 1;
+
+        while (low <= high) {
+
+            int mid = low + (high - low) / 2;
+
+            if (numbers[mid] == target) {
+                return mid;
+            }
+
+            // left half is sorted
+            if (numbers[low] <= numbers[mid]) {
+
+                if (target >= numbers[low] && target < numbers[mid]) {
+                    // it is present in this part
+                    high = mid - 1;
+                } else {
+                    low = mid + 1;
+                }
+            } else {
+                // right half is sorted
+
+                if (target > numbers[mid] && target <= numbers[high]) {
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
+                }
+            }
+        }
+
+
+        return -1;
+    }
+
 }
