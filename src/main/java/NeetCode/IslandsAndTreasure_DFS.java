@@ -72,6 +72,11 @@ Output:
     R D L U
 */
 
+
+    // TC : O(T) * O(m * n)
+    // Where: T = number of treasure chests and m × n = total number of cells
+    // Since T can itself be as large as m × n, the worst case can also be written as: O((m × n)²)
+    // SC : O(m × n)
     public static void dfs(int[][] grid, int row, int col, int distance) {
 
         if (row < 0 || col < 0 || row >= grid.length || col >= grid[0].length) {
